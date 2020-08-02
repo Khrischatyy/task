@@ -27,55 +27,41 @@
 
 	<main>
 		<div class="comments">
+			@foreach ($users as $user)
 			<div class="comments__item">
 				<div class="name_time">
-					<div class="name">Савва</div>
+					<div class="name">{{$user->name}}</div>
 					<div class="time_day">
-						<div class="time">18:05</div>
-						<div class="day">07.02.2014</div>
+						<div class="time">{{$user->created_at}}</div>
 					</div>
 				</div>
 				<div class="comment">
-					Спасибо за Ваше тестовое задание.Оно, действительно изумительное.
+					{{$user->text}}
 				</div>
 			</div>
-			<div class="comments__item">
-				<div class="name_time">
-					<div class="name">Евдоким</div>
-					<div class="time_day">
-						<div class="time">17:42</div>
-						<div class="day">07.02.2014</div>
-					</div>
-				</div>
-				<div class="comment">
-					Если включить мозги, то задание элементарно, Ватсон!
-				</div>
-			</div>
-			<div class="comments__item">
-				<div class="name_time">
-					<div class="name">Артемий</div>
-					<div class="time_day">
-						<div class="time">16:10</div>
-						<div class="day">07.02.2014</div>
-					</div>
-				</div>
-				<div class="comment">
-					Почему такое сложное задание???Мне кажется, нужно быть первоклассным программистом, чтобы выполнить его :(
-				</div>
-			</div>
-		</div>
-		<div class="form_section">
+			@endforeach
+		<form action="{{ route('submit') }}" method="post" class="form_section">
+			{{ csrf_field() }}
 			<h2>Оставить комментарий</h2>
 			<div class="form_section__item">
-				<label class="form_section__item_desc">Ваше имя</label>
-				<input class="form_section__item_input_name" type="text" name="name" placeholder="Герасим">
+				<label for="form_section__item_input" class="form_section__item_desc">Ваше имя</label>
+				<input name="form_section__item_input" id="form_section__item_input" class="form_section__item_input_name" type="text" name="name" placeholder="Герасим">
 			</div>
 			<div class="form_section__item">
-				<label class="form_section__item_desc">Ваш комментарий</label>
-				<textarea class="form_section__item_input_text"></textarea>
+				<label for="form_section__item_textarea" class="form_section__item_desc">Ваш комментарий</label>
+				<textarea name="form_section__item_textarea" id="form_section__item_textarea" class="form_section__item_input_text"></textarea>
 				<input class="form_section__item_button" type="submit" name="button" value="Отправить">
 			</div>
+		</form>
+		@if($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+			@foreach($errors->all() as $error)
+                <li class="alert_item">{{$error}}</li>
+         	@endforeach
+			</ul>
 		</div>
+		@endif
 	</main>
 
 

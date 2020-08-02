@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/','UsersController@returnUsers')->name('show');
+Route::post('/submit','UsersController@insert')->name('submit');
 
-Route::get('/', function () {
-    return view('view');
-});
+

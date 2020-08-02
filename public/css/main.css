@@ -145,6 +145,7 @@ main {
 	padding-left: 40px;
 }
 .time {
+	padding-top: 4px;
 	padding-right: 15px;
 }
 .comment {
@@ -192,7 +193,14 @@ main {
 	width: 133px;
 	height: 40px;
 }
+.alert {
+	color: red;
+	text-align: center;
 
+}
+.alert_item {
+	list-style: none;
+}
 /*************************************************************************************************/
 /********************************************FOOTER*************************************************/
 footer {
