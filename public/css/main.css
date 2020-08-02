@@ -193,10 +193,14 @@ main {
 	width: 133px;
 	height: 40px;
 }
-.alert {
+.alert-danger {
 	color: red;
 	text-align: center;
 
+}
+.alert {
+	color: green;
+	text-align: center;
 }
 .alert_item {
 	list-style: none;

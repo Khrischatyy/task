@@ -13,17 +13,19 @@ class UsersController extends Controller
     public function returnUsers() {
     	$users = new User();
     	$users = User::all();
-    	return view('view',['users'=>$users]);
+    	return view('layouts.view',['users'=>$users]);
     }
      public function insert(UserRequest $request)
     {
-    	$makeUser = new User();
-    	$makeUser->name = $request->input('form_section__item_input');
-    	$makeUser->text = $request->input('form_section__item_textarea');
 
-    	$makeUser->save();
+            $makeUser = new User();
+            $makeUser->name = $request->input('form_section__item_input');
+            $makeUser->text = $request->input('form_section__item_textarea');
 
-    	return redirect()->route('show');
-       
+            $makeUser->save();
+
+            session()->flash('notif','Ваш комментарий успешно добавлен');
+
+            return redirect()->route('show');
     }
 }

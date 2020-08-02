@@ -11,6 +11,6 @@
 |
 */
 Route::get('/','UsersController@returnUsers')->name('show');
-Route::post('/submit','UsersController@insert')->name('submit');
+Route::post('/insert','UsersController@insert')->name('insert');
 
 
